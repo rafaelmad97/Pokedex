@@ -1,0 +1,29 @@
+.content {    
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.landingPage {
+    color: yellow;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+.button {
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+    background-image: url(https://www.pngkit.com/png/full/570-5707022_pokeball-8-bit-pokeball.png);
+    background-size: contain;
+    background-repeat: space;
+    background-position: center;
+    background-color: transparent;
+    border-color: 0px transparent;
+}
+
+
+

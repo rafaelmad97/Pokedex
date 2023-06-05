@@ -1,0 +1,21 @@
+
+.homepage {
+    color: aliceblue;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+}
+
+.background_home::before {
+    position: fixed;
+    background-image: url(https://images3.alphacoders.com/662/thumbbig-662132.webp);
+    background-size: cover;
+    background-size: cover;
+    content: " ";
+    filter: blur(2px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}

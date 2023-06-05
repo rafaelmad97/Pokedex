@@ -1,0 +1,16 @@
+.background_leading::before {
+    position: absolute;
+    background-image: url(https://preview.redd.it/d9spuwer2c491.png?width=1050&format=png&auto=webp&s=9ca8c75c63da9f8bb134e955d73e2770d073375e);
+    background-position: center;
+    background-size: cover;
+    content: " ";
+    filter: brightness(0.85);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+
+

@@ -8,7 +8,7 @@ const ListPokemon = (props) => {
   const [pages, setPages] = useState(1);
   const [pagesdb, setPagesDb] = useState(1);
   const [byOrden, setbyOrden] = useState(1);
-  const [byGenero, setbyGenero] = useState(-1);
+ 
   const [byOrigen, setbyOrigen] = useState("all");
 
   const handleSetPage = (value) => {
@@ -59,7 +59,6 @@ const ListPokemon = (props) => {
     }
   };
 
-  const handlesetbyGenero = (event) => setbyGenero(Number(event.target.value));
 
   const handlesetbyOrigen = (event) => setbyOrigen(event.target.value);
 
@@ -100,7 +99,7 @@ const ListPokemon = (props) => {
         </div>
         <div className="item">
           <button className="AddPokemon" onClick={handleCreate}>
-            Agregar Videojuego
+            Agregar Pokemon
           </button>
         </div>
       </div> 

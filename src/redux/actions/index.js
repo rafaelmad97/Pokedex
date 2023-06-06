@@ -4,6 +4,7 @@ export const GET_TYPES = "GET_TYPES";
 export const GET_POKEMONS = "GET_POKEMONS";
 export const GET_POKEMONS_INDATABASE = "GET_POKEMONS_INDATABASE";
 export const GET_POKEMONS_BY_NAME = "GET_POKEMONS_BY_NAME";
+export const CLEAN_RESULTS = "CLEAN_RESULTS";
 
 export const getTypes = () => {
   return async function (dispatch) {
@@ -51,6 +52,15 @@ export const searchPokemonbyName = (name) => {
         });
       })
       .finally();
+  };
+};
+
+export const cleanResults = () => {
+  return function (dispatch) {
+    dispatch({
+      type: CLEAN_RESULTS,
+      payload: {},
+    });
   };
 };
 

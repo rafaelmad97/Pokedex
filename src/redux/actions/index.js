@@ -8,13 +8,7 @@ export const CLEAN_RESULTS = "CLEAN_RESULTS";
 
 export const getTypes = () => {
   return async function (dispatch) {
-    await fetch(`${API_URL}/types`, {
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin":
-          "https://pokemons-client-production.up.railway.app/",
-      },
-    })
+    await fetch(`${API_URL}/types`)
       .then((res) => res.json())
       .then((res) =>
         dispatch({

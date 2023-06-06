@@ -1,10 +1,10 @@
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import "./cardDetail.css";
 
 const CardDetail = (props) => {
   const { isDbPokemon, pokemon, types } = props;
-  const history = useHistory();
+  // const history = useHistory();
 
   const typesValues = isDbPokemon
      ? pokemon.types

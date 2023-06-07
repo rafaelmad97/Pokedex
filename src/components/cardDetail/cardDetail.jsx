@@ -1,24 +1,24 @@
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import "./cardDetail.css";
 
 const CardDetail = (props) => {
   const { isDbPokemon, pokemon, types } = props;
-  // const history = useHistory();
+   const history = useHistory();
 
   const typesValues = isDbPokemon
      ? pokemon.types
     .map((value) => {
           const indexType = types.findIndex((typedb) => typedb.id === value.id_types);
         return indexType !== -1 ? types[indexType].name : "";
-        
      })
             :  pokemon.types.map(({type}) => type?.name)
 
+  
   const handleNav = () => {
-  //   history.push(`/detail/${videogame.id}`, {
-  //     isdb: isApivideogame,
-  //   });
+     history.push(`/detail/${isDbPokemon ? pokemon.ID: pokemon.id}`, {
+      isdb: isDbPokemon,
+     });
   };
 
   return (

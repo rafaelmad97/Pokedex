@@ -66,7 +66,7 @@ const ListPokemon = (props) => {
 
 
   const handleCreate = () => {
-    history.push("/crear");
+   console.log("crear")
   };
 
   return (

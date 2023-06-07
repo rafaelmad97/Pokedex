@@ -6,6 +6,8 @@ const ListPokemon = (props) => {
   const [pages, setPages] = useState(1);
   const [pagesdb, setPagesDb] = useState(1);
   const [byOrden, setbyOrden] = useState(1);
+  const [byTipo, setByTipo] = useState(-1);
+  const { types } = props;
 
   const [byOrigen, setbyOrigen] = useState("all");
 
@@ -26,12 +28,18 @@ const ListPokemon = (props) => {
 
     if (values.length !== 0) {
       if (endindex - elements < 0) {
-        values = values.slice(endindex);
+        values = values
+          .slice(endindex)
+          .filter((value) => filterbyTipo(isdb, value));
       } else {
         if (endindex === elements) {
-          values = values.slice(0, endindex);
+          values = values
+            .slice(0, endindex)
+            .filter((value) => filterbyTipo(isdb, value));
         } else {
-          values = values.slice(endindex - elements, endindex);
+          values = values
+            .slice(endindex - elements, endindex)
+            .filter((value) => filterbyTipo(isdb, value));
         }
       }
     }
@@ -47,6 +55,7 @@ const ListPokemon = (props) => {
     let b_rating = isdb
       ? b.pokemon.ataque
       : b.stats.filter(({ stat }) => stat.name === "attack")[0].base_stat;
+
     switch (byOrden) {
       case 1:
         return a_name > b_name ? 1 : -1;
@@ -64,6 +73,24 @@ const ListPokemon = (props) => {
   const handlesetbyOrigen = (event) => setbyOrigen(event.target.value);
 
   const handlesetbyOrden = (event) => setbyOrden(Number(event.target.value));
+
+  const handlesetByTypo = (event) => setByTipo(Number(event.target.value));
+
+  const filterbyTipo = (isDb, value) => {
+    if (byTipo !== -1) {
+      const type_name = types.find(({ id }) => id === byTipo)?.name;
+      if (isDb) {
+        return (
+          value.type.find(({ id_types }) => id_types === byTipo) !== undefined
+        );
+      }
+
+      return (
+        value.types.find(({ type }) => type_name === type.name) !== undefined
+      );
+    }
+    return true;
+  };
 
   const handleCreate = () => {
     console.log("crear");
@@ -95,6 +122,19 @@ const ListPokemon = (props) => {
             <option value={2}>Descendente</option>
             <option value={3}>Ataque (ASC)</option>
             <option value={4}>Ataque (DESC)</option>
+          </select>
+        </div>
+        <div className="item">
+          <select
+            placeholder="Tipo"
+            className="selecfilters"
+            value={byTipo}
+            onChange={handlesetByTypo}
+          >
+            <option value={-1}>Todos los tipos </option>
+            {types.map((option) => (
+              <option value={option.id}>{option.name}</option>
+            ))}
           </select>
         </div>
         <div className="item">
@@ -190,6 +230,12 @@ const ListPokemon = (props) => {
       )}
     </>
   );
+};
+
+export const mapStateToProps = ({ types }) => {
+  return {
+    types,
+  };
 };
 
 export default ListPokemon;

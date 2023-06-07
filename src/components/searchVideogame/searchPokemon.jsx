@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import CardDetail from "../cardDetail/cardDetail";
 import * as actions from "../../redux/actions/index";
 
@@ -7,29 +7,29 @@ import { connect } from "react-redux";
 import "./searchPokemon.css";
 
 const SearchPokemon = (props) => {
-  const { searchPokemonbyName, searched_pokemons,cleanResults  } = props;
+  const { searchPokemonbyName, searched_pokemons, cleanResults } = props;
 
   const [search, setSearch] = useState("");
-  const [showResults, setshowResults] = useState(false)
+  const [showResults, setshowResults] = useState(false);
 
   const handleSetSearch = (event) => {
     setSearch(event.target.value);
   };
 
   const handleClean = () => {
-    setshowResults(false)
+    setshowResults(false);
     setSearch("");
-    cleanResults()
+    cleanResults();
   };
 
-  const handleSearch = () => {
+  const handleSearch = () => {
     searchPokemonbyName(search);
-    setshowResults(true)
-  }
+    setshowResults(true);
+  };
 
   return (
     <>
-     <div className="content_search">
+      <div className="content_search">
         <input
           type="text"
           onChange={handleSetSearch}
@@ -45,15 +45,15 @@ const SearchPokemon = (props) => {
           Limpiar Resultados
         </button>
       </div>
-      
-      <br />
-       {showResults && <>
 
-       {searched_pokemons.db !== undefined && (
+      <br />
+      {showResults && (
+        <>
+          {searched_pokemons.db !== undefined && (
             <>
-              <h3>Mis Juegos</h3>
+              <h3>Mis Pokemons</h3>
               <div className="results">
-                 {searched_pokemons.db?.map(({pokemon,pokemonTypes}) => {
+                {searched_pokemons.db?.map(({ pokemon, pokemonTypes }) => {
                   return (
                     <CardDetail
                       pokemon={{
@@ -64,7 +64,7 @@ const SearchPokemon = (props) => {
                       isDbPokemon={true}
                     />
                   );
-                })} 
+                })}
                 {searched_pokemons.db?.length === 0 && (
                   <h1>No hay resultados</h1>
                 )}
@@ -77,29 +77,28 @@ const SearchPokemon = (props) => {
               <h3> Fuente externa</h3>
               <br />
               <div className="results">
-                {searched_pokemons.api?.length === 0 ?(
+                {searched_pokemons.api?.length === 0 ? (
                   <h1>No hay resultados</h1>
-                  ): <>
-                  {searched_pokemons.api?.map((pokemon) => {
-                   return <CardDetail
-                   pokemon={
-                    pokemon
-                   }
-                   key={pokemon.id}
-                   isDbPokemon={false}
-                 />
-                 })} 
-                
-                </>}
+                ) : (
+                  <>
+                    {searched_pokemons.api?.map((pokemon) => {
+                      return (
+                        <CardDetail
+                          pokemon={pokemon}
+                          key={pokemon.id}
+                          isDbPokemon={false}
+                        />
+                      );
+                    })}
+                  </>
+                )}
               </div>
             </>
-          )} 
-       </>
+          )}
+        </>
+      )}
 
-           
-        }
-
-      <br /> 
+      <br />
     </>
   );
 };
@@ -116,9 +115,9 @@ export const mapDispatchToProps = (dispatch, props) => {
     searchPokemonbyName: (name) => {
       return dispatch(actions.searchPokemonbyName(name));
     },
-    cleanResults: ()=>{
+    cleanResults: () => {
       return dispatch(actions.cleanResults());
-    }
+    },
   };
 };
 

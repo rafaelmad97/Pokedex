@@ -1,14 +1,12 @@
-import { useHistory } from "react-router-dom";
 import CardDetail from "../cardDetail/cardDetail";
 import "./listPokemons.css";
 import { useState } from "react";
 
 const ListPokemon = (props) => {
-  const history = useHistory();
   const [pages, setPages] = useState(1);
   const [pagesdb, setPagesDb] = useState(1);
   const [byOrden, setbyOrden] = useState(1);
- 
+
   const [byOrigen, setbyOrigen] = useState("all");
 
   const handleSetPage = (value) => {
@@ -43,35 +41,37 @@ const ListPokemon = (props) => {
   const handleSort = (a, b, isdb) => {
     let a_name = isdb ? a.pokemon.Nombre : a.name;
     let b_name = isdb ? b.pokemon.Nombre : b.name;
-    let a_rating = isdb ? a.pokemon.ataque : a.stats.filter(({stat})=>stat.name === "attack")[0].base_stat;
-    let b_rating = isdb ? b.pokemon.ataque : b.stats.filter(({stat})=>stat.name === "attack")[0].base_stat;
+    let a_rating = isdb
+      ? a.pokemon.ataque
+      : a.stats.filter(({ stat }) => stat.name === "attack")[0].base_stat;
+    let b_rating = isdb
+      ? b.pokemon.ataque
+      : b.stats.filter(({ stat }) => stat.name === "attack")[0].base_stat;
     switch (byOrden) {
       case 1:
         return a_name > b_name ? 1 : -1;
       case 2:
         return b_name > a_name ? 1 : -1;
-       case 3:
+      case 3:
         return a_rating < b_rating ? 1 : -1;
-     case 4:
-      return b_rating < a_rating ? 1 : -1;
+      case 4:
+        return b_rating < a_rating ? 1 : -1;
       default:
         return false;
     }
   };
 
-
   const handlesetbyOrigen = (event) => setbyOrigen(event.target.value);
 
   const handlesetbyOrden = (event) => setbyOrden(Number(event.target.value));
 
-
   const handleCreate = () => {
-   console.log("crear")
+    console.log("crear");
   };
 
   return (
     <>
-       <div className="container_options">
+      <div className="container_options">
         <div className="item">
           <select
             placeholder="Origen"
@@ -102,16 +102,16 @@ const ListPokemon = (props) => {
             Agregar Pokemon
           </button>
         </div>
-      </div> 
-      
+      </div>
+
       {(byOrigen === "all" || byOrigen === "bd") && (
         <>
           <h1> Mis Pokemones</h1>
           <div className="Pokemons">
-            {handleSlice(true).map(({pokemon, type}) => { 
+            {handleSlice(true).map(({ pokemon, type }) => {
               return (
                 <CardDetail
-                  pokemon={{...pokemon, types:type}}
+                  pokemon={{ ...pokemon, types: type }}
                   key={pokemon.id}
                   isDbPokemon={true}
                 />
@@ -151,16 +151,17 @@ const ListPokemon = (props) => {
           <h1> Pokedex Api</h1>
           <div className="Pokemons">
             {handleSlice(false).map((pokemon) => {
-              return <CardDetail
+              return (
+                <CardDetail
                   pokemon={pokemon}
                   key={pokemon.id}
                   isDbPokemon={false}
                 />
-              
+              );
             })}
             {handleSlice(false).length === 0 && <h3> Nada por aqui</h3>}
           </div>
-          <br /> 
+          <br />
           <br />
           <div className="pages">
             <div className="button_nav">
@@ -186,7 +187,7 @@ const ListPokemon = (props) => {
             </div>
           </div>
         </>
-      )} 
+      )}
     </>
   );
 };

@@ -1,8 +1,9 @@
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 import LandingPage from "./components/landingPage/landingPage";
 import HomePage from "./components/homePage/homePage";
 import ViewPokemon from "./components/viewPokemon/ViewPokemon";
+
+import "./App.css";
 
 function App() {
   return (

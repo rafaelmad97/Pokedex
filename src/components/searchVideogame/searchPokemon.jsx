@@ -37,8 +37,13 @@ const SearchPokemon = (props) => {
           placeholder="Buscar Pokemon"
           className="search search_shadow"
         />
+
         <br />
-        <button className="cleanSearch" onClick={(event) => handleSearch()}>
+        <button
+          className="cleanSearch"
+          onClick={(event) => handleSearch()}
+          disabled={search.length === 0}
+        >
           Buscar Pokemon
         </button>
         <button className="cleanSearch" onClick={(event) => handleClean()}>

@@ -70,6 +70,22 @@ export const getPokemonbyID = async (id) => {
     .finally();
 };
 
-export const createPokemon = async (formdata) => {
-  console.log(formdata);
+export const createPokemon = (data) => async () => {
+  return await fetch(`${API_URL}/pokemons`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  })
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      if (data.message !== undefined) {
+        alert(data.message);
+      } else {
+        alert(data.error);
+      }
+    });
 };

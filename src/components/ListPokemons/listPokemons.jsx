@@ -1,8 +1,10 @@
+import { useHistory } from "react-router-dom";
 import CardDetail from "../cardDetail/cardDetail";
 import "./listPokemons.css";
 import { useState } from "react";
 
 const ListPokemon = (props) => {
+  const history = useHistory();
   const [pages, setPages] = useState(1);
   const [pagesdb, setPagesDb] = useState(1);
   const [byOrden, setbyOrden] = useState(1);
@@ -93,7 +95,7 @@ const ListPokemon = (props) => {
   };
 
   const handleCreate = () => {
-    console.log("crear");
+    history.push("/AddPokemon");
   };
 
   return (

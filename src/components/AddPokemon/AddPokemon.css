@@ -1,0 +1,87 @@
+.imagen_form_pokemon {
+    height: 400px;
+    width: 70%;
+    margin: 5% 15%;
+    filter: opacity(0.80);
+}
+
+.item_form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 12px;
+}   
+
+.field {
+    height: 15px;
+    width: 100%;
+    margin: 8px;
+    color: white;
+    background-color: rgb(0,0,0,0.5);
+    border-color: transparent;
+    border-radius: 8px;
+    box-shadow: 1px 8px 8px rgb(159,0,159, 5.5);
+}
+
+.item_multiple {
+    display: flex;
+    flex-direction: column;
+}
+
+.button_form {
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}
+
+.guardar {
+    background-image: url(https://img1.picmix.com/output/stamp/normal/6/8/0/2/2172086_89955.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 130px;
+    height: 130px;
+   
+}
+
+.home {
+    background-image: url(https://images.wikidexcdn.net/mwuploads/wikidex/1/18/latest/20190103173254/Laboratorio_de_Oak_RfVh.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 130px;
+    height: 130px;
+    font-size: large;
+
+    font-weight: bolder;
+}
+
+.delete {
+    background-image: url(https://img.freepik.com/free-icon/cancel_318-395974.jpg?w=2000);
+    background-size: cover;
+    color: transparent;
+    background-color: transparent;
+    border: unset;
+    height: 30px;
+    width: 30px ;
+    cursor: pointer;
+    margin: 8px;
+}
+.error_container {
+    background-color: rgb(255,0,0,80%);
+    padding: 16px;
+    border-radius: 16px;
+
+    -moz-box-shadow: 10px 10px 5px 0px rgba(255,255,255,1);
+
+    -webkit-box-shadow: 0px 0px 8px 9px rgba(255,255,255,0.58);
+    -moz-box-shadow: 0px 0px 8px 9px rgba(255,255,255,0.58);
+    box-shadow: 0px 0px 8px 9px rgba(255,255,255,0.58);
+}
+.error {
+    margin: 8px;
+    color: white;
+    font-size: 15px;
+}
